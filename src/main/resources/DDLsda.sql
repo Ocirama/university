@@ -6,11 +6,16 @@ create table person
     surname varchar(50) not null,
     gender varchar(50) not null
 );
-
+CREATE TABLE university(
+    id           INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title varchar (50) not null unique
+);
 create table study_program
 (
     id int unsigned auto_increment primary key,
-    title varchar(50) not null unique
+    title varchar(50) not null unique,
+    university_id int unsigned not null,
+    FOREIGN KEY (university_id) REFERENCES university(id)
 );
 
 create table student
@@ -28,7 +33,7 @@ create table lecturer
 (
     id int unsigned auto_increment primary key,
     level varchar(50) not null,
-    salary DECIMAL(8, 2) not null,
+    salary int not null,
     person_id int unsigned not null,
     FOREIGN KEY (person_id) REFERENCES person(id)
 );
@@ -67,3 +72,4 @@ CREATE TABLE exam
     FOREIGN KEY (exam_type_id) REFERENCES exam_type (id),
     FOREIGN KEY (student_id) REFERENCES student (id)
 );
+

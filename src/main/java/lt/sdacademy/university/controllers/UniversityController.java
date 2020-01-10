@@ -20,12 +20,10 @@ public  class UniversityController  {
     public UniversityController(UniversityService universityService) {
         this.universityService = universityService;
     }
-    @Autowired
-    PersonRepository personRepository;
 
     @GetMapping
     public List<University> getInfo() {
-        return universityService.getAll();
+        return universityService.getUniversities();
     }
     /*@GetMapping("/getpersonnames")
     public List<PersonEntity> getAllPersons() {

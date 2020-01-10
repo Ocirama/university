@@ -16,7 +16,7 @@ import lombok.Setter;
 @Table(name="university")
 public class UniversityEntity extends AbstractEntity{
 
-    @Column(name = "title", length = 50, nullable = false)
+    @Column(name = "title", length = 50, nullable = false,unique = true)
     private String title;
 
     @OneToMany

@@ -10,7 +10,8 @@ import lombok.Setter;
     @AllArgsConstructor
     public class University {
 
+        /*private String title;*/
         private String title;
-        private List<String> students;
-        private List<String> lecturers;
+        private List<String> studyPrograms;
+        /*private List<String> lecturers;*/
 }

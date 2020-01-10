@@ -8,7 +8,8 @@ insert into lecturer (level, salary, person_id) values ('lecturer', 199, (select
 insert into person (name, surname, gender) values ('Paulius', 'Stabingis', 'male');
 insert into lecturer (level, salary, person_id) values ('lecturer', 185.2, (select max(id) from person));
 
-insert into study_program (title) VALUES ('Java nuo pagrindų');
+insert into university (title) VALUES('KTU');
+insert into study_program (title,university_id) VALUES ('Java nuo pagrindų',(select university.id from university where university.title = 'KTU'));
 insert into module (title, lecturer_id) values ('Java - Fundamentals', (select lecturer.id from lecturer inner join person p on lecturer.person_id = p.id where p.name='Gintaras'));
 insert into study_program_module (study_program_id, module_id) VALUES ((select id from study_program where title = 'Java nuo pagrindų'), (select id from module where title = 'Java - Fundamentals'));
 insert into module (title, lecturer_id) values ('Java - Fundamentals: Coding', (select lecturer.id from lecturer inner join person p on lecturer.person_id = p.id where p.name='Gintaras'));
@@ -26,7 +27,8 @@ insert into study_program_module (study_program_id, module_id) VALUES ((select i
 insert into module (title, lecturer_id) values ('JDBC & Hibernate', (select lecturer.id from lecturer inner join person p on lecturer.person_id = p.id where p.name='Rutenis'));
 insert into study_program_module (study_program_id, module_id) VALUES ((select id from study_program where title = 'Java nuo pagrindų'), (select id from module where title = 'JDBC & Hibernate'));
 
-insert into study_program (title) VALUES ('Sourcery for Developers');
+insert into university (title) VALUES('DevBridge');
+insert into study_program (title,university_id) VALUES ('Sourcery for Developers',(select university.id from university where university.title = 'DevBridge'));
 insert into study_program_module (study_program_id, module_id) VALUES ((select id from study_program where title = 'Sourcery for Developers'), (select id from module where title = 'Java - Advanced Features'));
 insert into module (title, lecturer_id) values ('Spring Framework', (select lecturer.id from lecturer inner join person p on lecturer.person_id = p.id where p.name='Tomas'));
 insert into study_program_module (study_program_id, module_id) VALUES ((select id from study_program where title = 'Sourcery for Developers'), (select id from module where title = 'Spring Framework'));
@@ -36,8 +38,8 @@ insert into module (title, lecturer_id) values ('JavaScript', (select lecturer.i
 insert into study_program_module (study_program_id, module_id) VALUES ((select id from study_program where title = 'Sourcery for Developers'), (select id from module where title = 'JavaScript'));
 insert into module (title, lecturer_id) values ('ReactJS', (select lecturer.id from lecturer inner join person p on lecturer.person_id = p.id where p.name='Paulius'));
 insert into study_program_module (study_program_id, module_id) VALUES ((select id from study_program where title = 'Sourcery for Developers'), (select id from module where title = 'ReactJS'));
-
-insert into study_program (title) VALUES ('Sourcery for Kids');
+insert into university (title) VALUES('Sourcery');
+insert into study_program (title, university_id) VALUES ('Sourcery for Kids',(select university.id from university where university.title = 'Sourcery'));
 
 insert into person (name, surname, gender) values ('Violeta', 'Baneliene', 'female');
 insert into student (study_type, date_started, person_id, study_program_id) values ('vakarines', '2019-08-06', (select max(id) from person), (select id from study_program where title = 'Java nuo pagrindų'));

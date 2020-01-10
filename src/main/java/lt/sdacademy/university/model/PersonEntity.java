@@ -17,4 +17,5 @@ public class PersonEntity extends AbstractEntity {
     private String surname;
     @Column(name = "gender",length = 50,nullable = false)
     private String gender;
+
 }

@@ -1,24 +1,27 @@
 package lt.sdacademy.university.converters;
 
-import static java.util.stream.Collectors.toList;
+import lt.sdacademy.university.model.UniversityEntity;
+import lt.sdacademy.university.model.dto.University;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-import lt.sdacademy.university.model.StudyProgramEntity;
-import lt.sdacademy.university.model.dto.StudyProgramStudent;
-import org.springframework.stereotype.Component;
+
+import static java.util.stream.Collectors.toList;
 
 @Component
 public class UniversityConverter {
 
-    public List<StudyProgramStudent> convert(List<StudyProgramEntity> studyProgramEntities) {
-        return studyProgramEntities.stream()
-            .map(sp -> new StudyProgramStudent(
-                sp.getTitle(),
-                sp.getStudents().stream()
-                    .map(s -> s.getPerson().getName()+ " " + s.getPerson().getSurname())
-                    .collect(toList()))
-            )
-            .collect(toList());
+    public List<University> convert(List<UniversityEntity> universityEntities) {
+        return universityEntities.stream()
+                .map(u -> new University(
+                        u.getTitle(),
+                        u.getStudyPrograms().stream()
+                        .map(s->s.getTitle())
+                                /* u.getLecturers().stream()
+                                         .map(s -> s.getPerson().getName() + " " + s.getPerson().getSurname())*/
+                                .collect(toList()))
+                )
+                .collect(toList());
     }
 }
 
